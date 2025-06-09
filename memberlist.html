@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LYFESTYLE - NAMELIST</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const text = "LYFESTYLE - NAMELIST";
+      let index = 0;
+      let direction = 1;
+
+      function typeTitle() {
+        document.title = text.slice(0, index);
+
+        if (direction === 1) {
+          if (index < text.length) {
+            index++;
+          } else {
+            direction = -1;
+            setTimeout(typeTitle, 1500);
+            return;
+          }
+        } else {
+          if (index > 0) {
+            index--;
+          } else {
+            direction = 1;
+          }
+        }
+
+        setTimeout(typeTitle, 150);
+      }
+
+      typeTitle();
+    });
+  </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css"> 
+
+    <link rel="icon" href="https://img2.pic.in.th/pic/2ef1f7a1522b24ef69f81fc0f8765314.png" type="image/png">
+</head>
+<body class="dark-mode">
+    <div class="member-list">
+        <h1>MEMBER LIST LYFESTYLE</h1>
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input" placeholder="ค้นหาชื่อสมาชิก...">
+            <span class="search-icon"><i class="fas fa-search"></i></span>
+        </div>
+        <div id="member-container"></div>
+        <div id="pagination" class="pagination"></div>
+         <footer class="credit">
+    Designed by <a href="https://www.facebook.com/jaypark.lyfestyle" target="_blank">Jaypark Lyfestyle</a> |
+    Powered by <a href="https://web.facebook.com/mon.winterfell/" target="_blank">Theboss Lyfestyle</a> | © 2025
+  </footer>
+        <button id="theme-toggle" class="theme-toggle"><i class="fas fa-sun"></i></button>
+
+
+  <div class="modal fade" id="f12Modal" tabindex="-1" aria-labelledby="f12ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" id="f12ModalLabel">แจ้งเตือน</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          กดหาพ่อมึงอะไอ้ดำ
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </div>
+    <script src="members.js"></script> 
+    <script src="script.js"></script> 
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"92d16d02bff433b6","version":"2025.3.0","r":1,"token":"611e8ac6bac24d16ad4b7e39b5e91845","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
+ <script>
+
+        document.addEventListener('keydown', function(event) {
+      if (event.key === 'F12') {
+        event.preventDefault();
+        const f12Modal = new bootstrap.Modal(document.getElementById('f12Modal'));
+        f12Modal.show();
+      }
+    });
+
+document.addEventListener('keydown', function(event) {
+  if (event.ctrlKey && ['x', 'c', 'v', 's'].includes(event.key.toLowerCase())) {
+    event.preventDefault();
+    alert('การใช้คีย์ลัด Ctrl+' + event.key.toUpperCase() + ' ถูกปิดใช้งานบนเว็บไซต์นี้');
+  }
+});
+
+
+
+    document.addEventListener('contextmenu', function(event) {
+      event.preventDefault();
+      alert('คลิกขวาถูกปิดใช้งานเพื่อป้องกันการก็อปปี้');
+    });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const h1 = document.querySelector("header h1");
+    const text = "L Y F E S T Y L E";
+    let index = 0;
+    let deleting = false;
+
+    function type() {
+      if (!deleting) {
+       
+        h1.textContent = text.slice(0, index);
+        index++;
+
+        if (index > text.length) {
+         
+          setTimeout(() => {
+            deleting = true;
+            index = text.length;
+            type();
+          }, 1500);
+          return;
+        }
+      } else {
+       
+        h1.textContent = text.slice(0, index);
+        index--;
+
+        if (index <= 1) {
+        
+          deleting = false;
+          index = 1; 
+          setTimeout(type, 500);
+          return;
+        }
+      }
+
+      setTimeout(type, 150);
+    }
+
+    type();
+  });
+
+particlesJS("particles-js", {
+  "particles": {
+    "number": {
+      "value": 80,
+      "density": { "enable": true, "value_area": 800 }
+    },
+    "color": { "value": "#ffffff" },
+    "shape": {
+      "type": "circle",
+      "stroke": { "width": 0, "color": "#000000" }
+    },
+    "opacity": {
+      "value": 0.5,
+      "random": false
+    },
+    "size": {
+      "value": 3,
+      "random": true
+    },
+    "line_linked": {
+      "enable": false 
+    },
+    "move": {
+      "enable": true,
+      "speed": 2,
+      "direction": "none",
+      "random": false,
+      "straight": false,
+      "out_mode": "out"
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": { "enable": true, "mode": "grab" },
+      "onclick": { "enable": false },
+      "resize": true
+    },
+    "modes": {
+      "grab": { "distance": 140, "line_linked": { "opacity": 1 } }
+    }
+  },
+  "retina_detect": true
+});
+  </script>
+</body>
+</html>
