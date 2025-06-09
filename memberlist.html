@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LYFESTYLE - NAMELIST</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const text = "LYFESTYLE - NAMELIST";
+      let index = 0;
+      let direction = 1;
+
+      function typeTitle() {
+        document.title = text.slice(0, index);
+
+        if (direction === 1) {
+          if (index < text.length) {
+            index++;
+          } else {
+            direction = -1;
+            setTimeout(typeTitle, 1500);
+            return;
+          }
+        } else {
+          if (index > 0) {
+            index--;
+          } else {
+            direction = 1;
+          }
+        }
+
+        setTimeout(typeTitle, 150);
+      }
+
+      typeTitle();
+    });
+  </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css"> 
+
+    <link rel="icon" href="https://img2.pic.in.th/pic/2ef1f7a1522b24ef69f81fc0f8765314.png" type="image/png">
+</head>
+  <style>
+    body {
+    font-family: 'Montserrat', sans-serif;
+    background: #1a1919; /* Dark mode default */
+    color: #e0e0e0; /* Dark mode text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    transition: background 0.3s ease, color 0.3s ease;
+    }
+
+
+    .member-list {
+        background: #2d2d2e;
+        padding: 30px;
+        border-radius: 8px;
+        border: 2px solid #ffffff; 
+        border-radius: 8px;
+        list-style-type: none;
+        box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff inset; /* เงา */
+        width: 100%;
+        max-width: 700px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        margin: 20px;
+        transition: background 0.3s ease;
+    }
+
+    h1 {
+        font-size: 2em;
+        font-weight: 600;
+        margin-bottom: 25px;
+        text-align: center;
+        color: #e0e0e0; /* Dark mode default */
+        transition: color 0.3s ease;
+    }
+
+    .search-container {
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 12px 40px 12px 15px;
+        border: 1px solid #202020; /* Dark mode border */
+        border-radius: 6px;
+        background: #202020; /* Dark mode background */
+        color: #e0e0e0; /* Dark mode text */
+        font-size: 1em;
+        transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    .search-input::placeholder {
+        color: #ffffff; /* Dark mode placeholder */
+    }
+
+    .search-input:focus {
+        border-color: #ffffff;
+        outline: none;
+    }
+
+    .search-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #ffffff; /* Dark mode icon */
+        font-size: 1.2em;
+        transition: color 0.3s ease;
+    }
+
+    .member {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        margin: 10px 0;
+        background: #252525; /* Dark mode default */
+        border: 1px solid #ffffff; /* Dark mode border */
+        border-radius: 6px;
+        color: #e0e0e0; /* Dark mode text */
+        opacity: 0;
+        animation: fadeIn 0.3s ease forwards;
+        transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .member.hidden {
+        display: none;
+    }
+
+    .member:hover {
+        background: #7c7c7c;
+        border-color: #a7a7a7;
+    }
+
+    .member .profile-pic {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 15px;
+        object-fit: cover;
+    }
+
+    .member .content {
+        flex-grow: 1;
+    }
+
+    .member .name {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin: 0 0 4px;
+        color: #e0e0e0; /* Dark mode default */
+        transition: color 0.3s ease;
+    }
+
+    .member .link {
+        font-size: 0.9em;
+        color: #0077ff; /* Dark mode link */
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .member .link:hover {
+        color: #e0e0e0;
+        text-decoration: underline;
+    }
+
+    .fb-icon {
+        width: 28px;
+        height: 28px;
+        background: #0024f1; /* Dark mode default */
+        color: #fff;
+        text-align: center;
+        line-height: 28px;
+        border-radius: 50%;
+        margin-left: 15px;
+        transition: background 0.3s ease;
+    }
+
+    .fb-icon:hover {
+        background: #4174ff;
+    }
+
+    .credit {
+        margin-top: 25px;
+        text-align: center;
+        font-size: 0.85em;
+        color: #ffffff; /* Dark mode default */
+        padding-top: 15px;
+        border-top: 1px solid #ffffff; /* Dark mode border */
+        transition: color 0.3s ease, border-top-color 0.3s ease;
+    }
+
+    .credit a {
+        color: #ffffff; /* Dark mode link */
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .credit a:hover {
+        color: #8b8b8b;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 25px;
+        gap: 15px;
+    }
+
+    .pagination button {
+        padding: 8px 16px;
+        background: #3b3b3b; /* Dark mode default */
+        color: #fff;
+        border: 2px solid #ffffff; 
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9em;
+        font-weight: 600;
+        transition: background 0.3s ease;
+    }
+
+    .pagination button:disabled {
+        background: #474747; /* Dark mode disabled */
+        cursor: not-allowed;
+    }
+
+    .pagination button:hover:not(:disabled) {
+        background: #535353;
+    }
+
+    .pagination span {
+        font-size: 0.95em;
+        color: #ffffff; /* Dark mode default */
+        transition: color 0.3s ease;
+    }
+
+    .theme-toggle {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 32px;
+        height: 32px;
+        background: #5a5a5a; /* Dark mode default */
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        font-size: 1em;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+        background: #7e7e7e;
+    }
+
+    /* Light Mode */
+    body.light-mode {
+        background: #f5f6f5;
+        color: #333;
+    }
+
+    body.light-mode .member-list {
+        background: #fff;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    body.light-mode h1 {
+        color: #2c3e50;
+    }
+
+    body.light-mode .member {
+        background: #fff;
+        border-color: #eee;
+        color: #333;
+    }
+
+    body.light-mode .member:hover {
+        background: #fafafa;
+        border-color: #ddd;
+    }
+
+    body.light-mode .member .name {
+        color: #2c3e50;
+    }
+
+    body.light-mode .member .link {
+        color: #555;
+    }
+
+    body.light-mode .member .link:hover {
+        color: #2c3e50;
+    }
+
+    body.light-mode .search-input {
+        background: #fff;
+        border-color: #ddd;
+        color: #333;
+    }
+
+    body.light-mode .search-input::placeholder {
+        color: #999;
+    }
+
+    body.light-mode .search-input:focus {
+        border-color: #2c3e50;
+    }
+
+    body.light-mode .search-icon {
+        color: #999;
+    }
+
+    body.light-mode .credit {
+        color: #777;
+        border-top-color: #eee;
+    }
+
+    body.light-mode .credit a {
+        color: #2c3e50;
+    }
+
+    body.light-mode .credit a:hover {
+        color: #2c3e50;
+    }
+
+    body.light-mode .pagination span {
+        color: #555;
+    }
+
+    body.light-mode .pagination button {
+        background: #2c3e50;
+    }
+
+    body.light-mode .pagination button:disabled {
+        background: #ccc;
+    }
+
+    body.light-mode .pagination button:hover:not(:disabled) {
+        background: #34495e;
+    }
+
+    body.light-mode .fb-icon {
+        background: #2c3e50;
+    }
+
+    body.light-mode .fb-icon:hover {
+        background: #34495e;
+    }
+
+    body.light-mode .theme-toggle {
+        background: #2c3e50;
+    }
+
+    body.light-mode .theme-toggle:hover {
+        background: #34495e;
+    }
+
+    /* โฆษณาด้านข้าง (เดิม) */
+    .floating-ad {
+        position: fixed;
+        top: 20%;
+        width: 200px;
+        background: #263238;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        z-index: 9999;
+        transition: background 0.3s ease;
+    }
+
+    .left-ad {
+        left: 20px;
+    }
+
+    .right-ad {
+        right: 20px;
+    }
+
+    /* โฆษณาด้านล่าง (ใหม่) */
+    .bottom-ad {
+        position: fixed;
+        bottom: 20px; /* ห่างจากขอบล่าง 20px */
+        left: 50%; /* อยู่กึ่งกลาง */
+        transform: translateX(-50%); /* จัดกึ่งกลางแนวนอน */
+        width: 500px; /* ความกว้าง banner */
+        background: #1a1919;
+        padding: 15px;
+        border: 2px solid #ffffff; 
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        z-index: 9999;
+        transition: background 0.3s ease;
+    }
+
+    .ad-content {
+        text-align: center;
+        color: #e0e0e0;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .ad-image {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+        margin-bottom: 10px;
+    }
+
+    .ad-content h3 {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin: 0 0 8px;
+        color: #e0e0e0;
+        transition: color 0.3s ease;
+    }
+
+    .ad-content p {
+        font-size: 0.9em;
+        color: #e4e4e4;
+        margin: 0 0 10px;
+        transition: color 0.3s ease;
+    }
+
+    .ad-button {
+        display: inline-block;
+        padding: 8px 16px;
+        border: 2px solid #ffffff; 
+        background: #28a745; /* สีเขียว */
+        color: #fff;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 0.9em;
+        font-weight: 600;
+        transition: background 0.3s ease;
+    }
+
+    .ad-button:hover {
+        background: #218838; /* สีเขียวเข้มเมื่อ hover */
+    }
+
+    .close-ad {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 20px;
+        height: 20px;
+        background: #ff4444;
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 14px;
+        cursor: pointer;
+        line-height: 20px;
+        transition: background 0.3s ease;
+    }
+
+    .close-ad:hover {
+        background: #cc0000;
+    }
+
+    /* Light Mode Adjustments */
+    body.light-mode .floating-ad,
+    body.light-mode .bottom-ad {
+        background: #fff;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    body.light-mode .ad-content h3 {
+        color: #707070;
+    }
+
+    body.light-mode .ad-content p {
+        color: #646464;
+    }
+
+    body.light-mode .ad-button {
+        background: #28a745;
+    }
+
+    body.light-mode .ad-button:hover {
+        background: #218838;
+    }
+  </style>
+</head>
+<body class="dark-mode">
+    <div class="member-list">
+        <h1>REAL MEMBER LIST LYFESTYLE</h1>
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input" placeholder="ค้นหาชื่อสมาชิก...">
+            <span class="search-icon"><i class="fas fa-search"></i></span>
+        </div>
+        <div id="member-container"></div>
+        <div id="pagination" class="pagination"></div>
+         <footer class="credit">
+    Designed by <a href="https://www.facebook.com/jaypark.lyfestyle" target="_blank">Jaypark Lyfestyle</a> |
+    Powered by <a href="https://web.facebook.com/mon.winterfell/" target="_blank">Theboss Lyfestyle</a> | © 2025
+  </footer>
+        <button id="theme-toggle" class="theme-toggle"><i class="fas fa-sun"></i></button>
+
+
+  <div class="modal fade" id="f12Modal" tabindex="-1" aria-labelledby="f12ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" id="f12ModalLabel">แจ้งเตือน</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          กดหาพ่อมึงอะไอ้ดำ
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </div>
+    <script src="./members.js"></script>
+    <script src="./script.js"></script> 
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"92d16d02bff433b6","version":"2025.3.0","r":1,"token":"611e8ac6bac24d16ad4b7e39b5e91845","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
+ <script>
+
+        document.addEventListener('keydown', function(event) {
+      if (event.key === 'F12') {
+        event.preventDefault();
+        const f12Modal = new bootstrap.Modal(document.getElementById('f12Modal'));
+        f12Modal.show();
+      }
+    });
+
+document.addEventListener('keydown', function(event) {
+  if (event.ctrlKey && ['x', 'c', 'v', 's'].includes(event.key.toLowerCase())) {
+    event.preventDefault();
+    alert('การใช้คีย์ลัด Ctrl+' + event.key.toUpperCase() + ' ถูกปิดใช้งานบนเว็บไซต์นี้');
+  }
+});
+
+
+
+    document.addEventListener('contextmenu', function(event) {
+      event.preventDefault();
+      alert('คลิกขวาถูกปิดใช้งานเพื่อป้องกันการก็อปปี้');
+    });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const h1 = document.querySelector("header h1");
+    const text = "L Y F E S T Y L E";
+    let index = 0;
+    let deleting = false;
+
+    function type() {
+      if (!deleting) {
+       
+        h1.textContent = text.slice(0, index);
+        index++;
+
+        if (index > text.length) {
+         
+          setTimeout(() => {
+            deleting = true;
+            index = text.length;
+            type();
+          }, 1500);
+          return;
+        }
+      } else {
+       
+        h1.textContent = text.slice(0, index);
+        index--;
+
+        if (index <= 1) {
+        
+          deleting = false;
+          index = 1; 
+          setTimeout(type, 500);
+          return;
+        }
+      }
+
+      setTimeout(type, 150);
+    }
+
+    type();
+  });
+
+particlesJS("particles-js", {
+  "particles": {
+    "number": {
+      "value": 80,
+      "density": { "enable": true, "value_area": 800 }
+    },
+    "color": { "value": "#ffffff" },
+    "shape": {
+      "type": "circle",
+      "stroke": { "width": 0, "color": "#000000" }
+    },
+    "opacity": {
+      "value": 0.5,
+      "random": false
+    },
+    "size": {
+      "value": 3,
+      "random": true
+    },
+    "line_linked": {
+      "enable": false 
+    },
+    "move": {
+      "enable": true,
+      "speed": 2,
+      "direction": "none",
+      "random": false,
+      "straight": false,
+      "out_mode": "out"
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": { "enable": true, "mode": "grab" },
+      "onclick": { "enable": false },
+      "resize": true
+    },
+    "modes": {
+      "grab": { "distance": 140, "line_linked": { "opacity": 1 } }
+    }
+  },
+  "retina_detect": true
+});
+
+  </script>
+</body>
+</html>
