@@ -1,4 +1,3 @@
-
 const members = [
     { "name": "Theboss Lyfestyle", "fbId": "mon.winterfell" },
     { "name": "Pryx Lyfestyle", "fbId": "Just.lyfestyle" },
